@@ -63,6 +63,10 @@ class NagiosCheckOpts(models.Model):
     get_ngcontact_groups.short_description = _(u'Contact groups assigned')
     get_ngcontact_groups.admin_order_field = 'contact_groups'
 
+    def get_ngcontact_groups_pk(self):
+        """ Returns the contactcroup comaseparated line for the nagios conf """
+        return ", ".join([str(x.pk) for x in self.contact_groups.all()])
+
 
 class NagiosContactGroup(Responsible):
     """ A nagios concatc group to recieve alerts """
