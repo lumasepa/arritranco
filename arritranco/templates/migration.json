@@ -1,0 +1,21 @@
+[
+{% for check in  checkops %}
+    {% if forloop.last %}
+    {
+      "machine": "{{check.machine.pk}}",
+      "machine_os_type": "{{check.machine.os.type.pk}}",
+      "options": "{{check.options}}",
+      "check_name": "{{check.check.name}}",
+      "contact_groups": [{{check.get_ngcontact_groups_pk}}]
+    }
+    {% else %}
+    {
+      "machine": "{{check.machine.pk}}",
+      "machine_os_type": "{{check.machine.os.type.pk}}",
+      "options": "{{check.options}}",
+      "check_name": "{{check.check.name}}",
+      "contact_groups": [{{check.get_ngcontact_groups_pk}}]
+    },
+    {% endif %}
+{% endfor %}
+]
